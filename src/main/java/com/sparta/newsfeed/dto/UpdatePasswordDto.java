@@ -11,4 +11,7 @@ public class UpdatePasswordDto {
 
     @Pattern(regexp = "[a-zA-Z0-9]{8,15}", message = "비밀번호가 형식과 다릅니다.")
     String postPassword;
+
+    public void setPrePassword(String current123) {
+    }
 }
