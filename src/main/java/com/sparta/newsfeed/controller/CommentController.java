@@ -3,6 +3,7 @@ package com.sparta.newsfeed.controller;
 
 import com.sparta.newsfeed.dto.CommentRequestDto;
 import com.sparta.newsfeed.dto.CommentResponseDto;
+import com.sparta.newsfeed.entity.Comment;
 import com.sparta.newsfeed.service.CommentService;
 import com.sparta.newsfeed.security.UserDetailsImpl;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -32,7 +33,7 @@ public class CommentController {
     }
 
     @PutMapping("/{id}")//댓글 수정
-    public Long updateComment(@PathVariable Long id, @RequestBody CommentRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+    public Comment updateComment(@PathVariable Long id, @RequestBody CommentRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         return commentService.updateComment(id,requestDto, userDetails);
     }
 

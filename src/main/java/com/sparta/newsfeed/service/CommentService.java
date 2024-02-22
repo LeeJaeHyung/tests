@@ -27,16 +27,22 @@ public class CommentService {
 
     public CommentResponseDto createComment(CommentRequestDto requestDto, UserDetailsImpl userDetails) { // 댓글 생성
         Comment comment = new Comment(requestDto, userDetails);
+        System.out.println(comment.toString());
         return new CommentResponseDto(commentRepository.save(comment));
     }
 
     @Transactional
-    public Long updateComment(Long id, CommentRequestDto requestDto, UserDetailsImpl userDetails) { //댓글 id를 기준으로 댓글 update
+    public Comment updateComment(Long id, CommentRequestDto requestDto, UserDetailsImpl userDetails) { //댓글 id를 기준으로 댓글 update
         Comment comment = findyComment(id);
+        System.out.println(comment.toString());
         if(validateUsername(comment, userDetails)){ // 작성자와 로그인한 user가 일치할 경우에만 업데이트
             comment.update(requestDto, userDetails);
-            return id;
-        }else return -id;
+            System.out.println(comment.toString());
+            return comment;
+        }else{
+
+            throw new IllegalArgumentException("선택한 댓글은 존재하지 않습니다.");
+        }
     }
 
     public Long deleteComment(Long id, UserDetailsImpl userDetails) { //댓글 id를 기준으로 댓글삭제

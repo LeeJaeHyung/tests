@@ -196,13 +196,13 @@ public class EntityDtoTest {
     @ExtendWith(MockitoExtension.class)
     public class CommentTest {
 
-        private Comment comment;
+       Comment comment;
 
         @Mock
-        private CommentRequestDto commentRequestDto;
+        CommentRequestDto commentRequestDto;
 
         @Mock
-        private UserDetailsImpl userDetails;
+        UserDetailsImpl userDetails;
 
         @BeforeEach
         void setUp() {
